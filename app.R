@@ -4,6 +4,7 @@ library(ggplot2)
 library(dplyr)
 library(plotly)
 
+
 ui <- shiny::htmlTemplate("www/index.html", document_ = "auto")
 
 server <- function(input, output, session) {
@@ -21,11 +22,10 @@ server <- function(input, output, session) {
     mtcars
   })
   output$histoTable1 <- DT::renderDataTable(server = T, {
+  # output$histoTable1 <- renderTable({
     mtcars
   })
 }
-
-
 
 # Run the application
 shinyApp(ui = ui, server = server)
