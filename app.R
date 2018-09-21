@@ -4,8 +4,6 @@ library(ggplot2)
 library(dplyr)
 library(plotly)
 
-myDates <- 1990:2018
-
 ui <- shiny::htmlTemplate("www/index.html", document_ = "auto")
 
 server <- function(input, output, session) {
