@@ -15,6 +15,12 @@
     <link rel="stylesheet" href="style.css">
     <script src="LayoutScript.js"></script>
 
+    <script>
+        $(document).on("click", "li.tabCenter a", function() {
+            $(this).trigger("shown");
+        });
+    </script>
+
     </head>
     <body>
 
@@ -27,10 +33,10 @@
 
     <!-- West Pane (Accordion) -->
     <div  id="tabs-west" class="ui-layout-west add-padding grey">
-    <UL id="westtabshead" class="ui-layout-north">
-    <LI><a href="#tab-panel-west-1">a</a></LI>
-    <LI><a href="#tab-panel-west-2">b</a></LI>
-    </UL>
+      <UL id="westtabshead" class="ui-layout-north">
+        <LI><a href="#tab-panel-west-1" class="active">a</a></LI>
+        <LI><a href="#tab-panel-west-2">b</a></LI>
+      </UL>
     <div class="ui-layout-west ui-widget-content add-scrollbar" style="border-top: 0; padding-top: 45px;">
 
     <div id="tab-panel-west-1" class="outline">
@@ -51,10 +57,11 @@ West Pane
 
     <!-- Center Pane -->
     <div id="tabs-center" class="ui-layout-center add-padding grey">
-    <UL class="ui-layout-north add-scrollbar">
-    <LI><a href="#tab-panel-center-1">Graph</a></LI>
-    <LI><a href="#tab-panel-center-2">Tabelle</a></LI>
-    </UL>
+      <ul id="northtabshead" class="ui-layout-north add-scrollbar">
+        <li class="tabCenter"><a href="#tab-panel-center-1" class="active">Graph</a></li>
+        <li class="tabCenter"><a href="#tab-panel-center-2">Tabelle</a></li>
+      </ul>
+
     <div class="ui-layout-center ui-widget-content add-scrollbar" style="border-top: 0;">
     <div id="tab-panel-center-1" class="outline">
     <div>
@@ -64,10 +71,10 @@ West Pane
 
     </div>
     </div>
-    <div id="tab-panel-center-2" class="outline">
+    <div id="tab-panel-center-2">
     <div>
 
-    {{ DT::dataTableOutput("histoTable1", width = "100%", height = "auto") }}
+    {{ DT::dataTableOutput("histoTable1") }}
 
   </div>
     </div>
