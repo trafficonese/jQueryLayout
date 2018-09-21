@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head> 
+	<title>Accordions and Tabs</title> 
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+	<link rel="stylesheet" type="text/css" href="../source/stable/layout-default.css">
+
+	<style type="text/css">
+
+	/* neutralize pane formatting BEFORE loading UI Theme */
+	.ui-layout-pane ,
+	.ui-layout-content {
+		background:	none;
+		border:		0;
+		padding:	0;
+		overflow:	visible;
+	}
+
+
+	p				{ margin:		1em 0; }
+
+	/* use !important to override UI theme styles */
+	.grey			{ background:	#999 !important; }
+	.outline		{ /*border:		1px dashed #F00 !important;*/ }
+	.add-padding	{ padding:		10px !important; }
+	.no-padding		{ padding:		0 !important; }
+	.add-scrollbar	{ overflow:		auto; }
+	.no-scrollbar	{ overflow:		hidden; }
+	.allow-overflow	{ overflow:		visible; }
+	.full-height	{ height:		100%; }
+	button			{ cursor:		pointer; }
+
+	</style>
+
+	<link rel="stylesheet" type="text/css" href="css/themes/smoothness/jquery-ui.css">
+
+
+	<script type="text/javascript" src="js/jquery.js"></script> 
+	<script type="text/javascript" src="js/jquery-ui.js"></script> 
+	<script type="text/javascript" src="../source/stable/jquery.layout.js"></script>
+
+	<!-- load the Tabs & Accordions callbacks so we can use them below-->
+	<script type="text/javascript" src="../source/stable/callbacks/jquery.layout.resizeTabLayout.js"></script>
+	<script type="text/javascript" src="../source/stable/callbacks/jquery.layout.resizePaneAccordions.js"></script>
+
+    <script type="text/javascript" src="js/themeswitchertool.js"></script> 
+	<script type="text/javascript" src="js/debug.js"></script>
+
+	<script type="text/javascript"> 
+
+	$(document).ready(function(){
+		// alias callback for convenience
+		resizePaneAccordions	= $.layout.callbacks.resizePaneAccordions;
+		resizeTabLayout			= $.layout.callbacks.resizeTabLayout;
+
+		// OUTER/PAGE LAYOUT
+		pageLayout = $("body").layout({ // DO NOT use "var pageLayout" here
+			west__size:			.30 
+		,	north__initClosed:	false
+		}); 
+
+		// TABS IN CENTER-PANE
+		// create tabs before wrapper-layout so elems are correct size before creating layout
+		pageLayout.panes.center.tabs({
+			activate:			resizeTabLayout // tab2-accordion is wrapped in a layout
+		});
+		pageLayout.panes.west.tabs({
+			activate:			resizeTabLayout // tab2-accordion is wrapped in a layout
+		});
+		// WRAPPER-LAYOUT FOR TABS/TAB-PANELS, INSIDE OUTER-CENTER PANE
+		pageLayout.panes.center.layout({
+			closable:			false
+		,	resizable:			false
+		,	spacing_open:		0
+		,	center__onresize:	resizeTabLayout // tabs/panels are wrapped with an inner-layout
+		});
+
+	});
+
+	</script> 
+    
+</head> 
+<body> 
+
+
+<div class="ui-layout-north ui-widget-content add-padding">North</div> 
+
+<div class="ui-layout-west no-scrollbar add-padding grey">
+	<UL class="ui-layout-north no-scrollbar allow-overflow">
+		<LI><a href="#tab-panel-west-1">Tab 1</a></LI>
+		<LI><a href="#tab-panel-west-2">Tab 2</a></LI>
+	</UL>
+  	<div class="ui-layout-west ui-widget-content add-scrollbar" style="border-top: 0;">
+		<div id="tab-panel-west-1" class="outline">
+			<B>Tabs inside a nested-layout</B>
+			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+				Vestibulum condimentum neque a velit laoreet dapibus.</p>
+		</div>
+		<div id="tab-panel-west-2" class="outline">
+			<B>Tabs inside a nested-layout</B>
+			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+				Vestibulum condimentum neque a velit laoreet dapibus.</p>
+		</div>
+  </div>
+</div>
+
+
+<div id="tabs-center" class="ui-layout-center no-scrollbar add-padding grey">
+    <UL class="ui-layout-north no-scrollbar allow-overflow">
+  		<LI><a href="#tab-panel-center-1">Graph</a></LI>
+  		<LI><a href="#tab-panel-center-2">Tabelle</a></LI>
+  	</UL>
+  	<div class="ui-layout-center ui-widget-content add-scrollbar" style="border-top: 0;">
+		<div id="tab-panel-center-1" class="outline">
+			<B>Tabs inside a nested-layout</B>
+			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+				Vestibulum condimentum neque a velit laoreet dapibus.</p>
+		</div>		
+		<div id="tab-panel-center-2" class="outline">
+			<B>Tabs inside a nested-layout</B>
+			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+				Vestibulum condimentum neque a velit laoreet dapibus.</p>
+		</div>
+  </div>
+</div>
+
+
+</body> 
+</html>

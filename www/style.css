@@ -1,0 +1,61 @@
+
+/* remove padding and scrolling from elements that contain an Accordion OR a content-div */
+.ui-layout-center ,	/* has content-div */
+.ui-layout-west ,	/* has Accordion */
+.ui-layout-east ,	/* has content-div ... */
+.ui-layout-east .ui-layout-content { /* content-div has Accordion */
+	padding: 0;
+	overflow: auto !important;
+}
+.ui-layout-center P.ui-layout-content {
+	line-height:	1.4em;
+	margin:			0; /* remove top/bottom margins from used as content-div */
+}
+
+.ui-widget-header {
+margin: 0px;
+}
+.ui-layout-center {
+overflow: auto !important;
+}
+
+.outline {
+padding: 2px 20px 2px 20px;
+}
+
+.js-plotly-plot .plotly .cursor-crosshair {
+    cursor: pointer !important;
+}
+
+#westtabshead {
+    position: fixed;
+    z-index: 1000000;
+}
+#tree {
+  padding-top: 40px;
+}
+#tree-search-input {
+  position: fixed;
+}
+/*
+.ui-layout-resizer {
+height: 40px !important;
+}
+.ui-layout-toggler {
+height: 40px !important;
+}
+
+
+
+.jstree-anchor :not(.jstree-search) {
+display: none;
+}
+
+.jstree-icon :not(.jstree-search) {
+  display: none;
+}
+
+.jstree-node :not(.jstree-search) {
+  display: none;
+}
+*/

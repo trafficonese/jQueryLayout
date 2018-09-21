@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+  <html style="overflow: hidden; height: 100%; border: medium none; padding: 0px; margin: 0px;" class="" lang="en">
+    <head>
+    <title>Title</title>
+    {{ headContent() }}
+
+    <link rel="stylesheet" href="layout-master/source/stable/layout-default.css">
+    <link rel="stylesheet" href="layout-master/demos/css/themes/smoothness/jquery-ui.css">
+    <script  src="layout-master/demos/js/jquery-ui.js"></script>
+    <script  src="layout-master/source/stable/jquery.layout.js"></script>
+    <script  src="layout-master/source/stable/callbacks/jquery.layout.resizeTabLayout.js"></script>
+    <script  src="layout-master/source/stable/callbacks/jquery.layout.resizePaneAccordions.js"></script>
+    <script  src="layout-master/demos/js/debug.js"></script>
+
+    <link rel="stylesheet" href="style.css">
+    <script src="LayoutScript.js"></script>
+
+    </head>
+    <body>
+
+    <!-- North Pane -->
+    <div class="ui-layout-north add-scrollbar add-padding grey" style="height: 100px;">
+      <p>
+     North Pane
+      </p>
+    </div>
+
+    <!-- West Pane (Accordion) -->
+    <div  id="tabs-west" class="ui-layout-west add-padding grey">
+    <UL id="westtabshead" class="ui-layout-north">
+    <LI><a href="#tab-panel-west-1">a</a></LI>
+    <LI><a href="#tab-panel-west-2">b</a></LI>
+    </UL>
+    <div class="ui-layout-west ui-widget-content add-scrollbar" style="border-top: 0; padding-top: 45px;">
+
+    <div id="tab-panel-west-1" class="outline">
+    <div>
+    <p>
+West Pane
+  </p>  </div>
+    </div>
+    <div id="tab-panel-west-2" class="outline">
+    <p>
+    Cras nec arcu sed nisi varius fermentum ut non nulla. Pellentesque ultricies condimentum nibh,
+  nec imperdiet felis laoreet sit amet.			Cras nec arcu sed nisi varius fermentum ut non nulla. Pellentesque ultricies condimentum nibh,  nec imperdiet felis laoreet sit amet.			Cras nec arcu sed nisi varius fermentum ut non nulla. Pellentesque ultricies condimentum nibh
+  </p>
+    </div>
+
+    </div>
+    </div>
+
+    <!-- Center Pane -->
+    <div id="tabs-center" class="ui-layout-center add-padding grey">
+    <UL class="ui-layout-north add-scrollbar">
+    <LI><a href="#tab-panel-center-1">Graph</a></LI>
+    <LI><a href="#tab-panel-center-2">Tabelle</a></LI>
+    </UL>
+    <div class="ui-layout-center ui-widget-content add-scrollbar" style="border-top: 0;">
+    <div id="tab-panel-center-1" class="outline">
+    <div>
+    {{ plotlyOutput("histo", width="100%", height="500px")}}
+
+    {{ DT::dataTableOutput("histoTable", width = "100%", height = "auto") }}
+
+    </div>
+    </div>
+    <div id="tab-panel-center-2" class="outline">
+    <div>
+
+    {{ DT::dataTableOutput("histoTable1", width = "100%", height = "auto") }}
+
+  </div>
+    </div>
+    </div>
+    </div>
+
+</body>
+
+</html>
+
+
